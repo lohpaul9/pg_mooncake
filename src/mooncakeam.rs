@@ -60,6 +60,11 @@ static MOONCAKEAM: LazyLock<pg_sys::TableAmRoutine> = LazyLock::new(|| {
     }
 });
 
+#[no_mangle]
+extern "C" fn is_mooncakeam(am: &pg_sys::TableAmRoutine) -> bool {
+    std::ptr::eq(am, &*MOONCAKEAM as *const _)
+}
+
 #[pg_extern(sql = "
 CREATE FUNCTION mooncakeam_handler(internal) RETURNS table_am_handler LANGUAGE c AS 'MODULE_PATHNAME', '@FUNCTION_NAME@';
 CREATE ACCESS METHOD mooncake TYPE TABLE HANDLER mooncakeam_handler;

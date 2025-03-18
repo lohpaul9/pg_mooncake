@@ -1,0 +1,4 @@
+[submodule "pg_duckdb"]
+	path = pg_duckdb
+	url = https://github.com/Mooncake-Labs/pg_duckdb
+	branch = mooncake
