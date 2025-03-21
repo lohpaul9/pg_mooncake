@@ -15,4 +15,7 @@ USER vscode
 RUN cargo install --locked cargo-pgrx \
  && cargo pgrx init
 
+RUN mkdir -p ~/.duckdb/extension_data/ && \
+    chmod 755 ~/.duckdb/extension_data/
+
 RUN echo '\\i /workspaces/pg_mooncake/.devcontainer/.psqlrc' > ~/.psqlrc
